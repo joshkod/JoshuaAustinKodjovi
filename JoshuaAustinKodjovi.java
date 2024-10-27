@@ -14,7 +14,6 @@ public class JoshuaAustinKodjovi {
 
    public static void main(String[] args) {
       String inputFileName = "C:\\\\Users\\\\10 Prestige\\\\Documents\\\\CCT_Dublin\\\\Diploma_in_Applied_Software_Development\\\\Programming&Mathematics_Fundamentals\\\\Assignments\\\\JoshuaAustinKodjovi\\\\src\\\\main\\\\java\\\\com\\\\mycompany\\\\joshuaaustinkodjovi\\\\customers.txt";
-
       String outputFileName = "customerdiscount.txt";
 
       try {
@@ -23,7 +22,7 @@ public class JoshuaAustinKodjovi {
          try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName));
 
-      String fullName;
+            String fullName;
             try {
                while((fullName = br.readLine()) != null) {
                   double valueOfPurchase = Double.parseDouble(br.readLine());
@@ -40,69 +39,74 @@ public class JoshuaAustinKodjovi {
                      }
                   }
                }
-
             } catch (Throwable var14) {
-                try {
-                   bw.close();
-                } catch (Throwable var13) {
-                   var14.addSuppressed(var13);
-                }
- 
-                throw var14;
-             }
- 
-             bw.close();
-          } catch (Throwable var15) {
-             try {
-                br.close();
-             } catch (Throwable var12) {
-                var15.addSuppressed(var12);
-             }
- 
-             throw var15;
-          }
- 
-          br.close();
-       } catch (NumberFormatException | IOException var16) {
-          var16.printStackTrace();
-       }
- 
-    }
+               try {
+                  bw.close();
+               } catch (Throwable var13) {
+                  var14.addSuppressed(var13);
+               }
 
-    private static boolean isValidClassType(int classType) {
-        return classType >= 0 && classType <= 3;
-     }
-  
-     private static boolean isValidYear(int year) {
-        int currentYear = Calendar.getInstance().get(1);
-        return year >= 1900 && year <= currentYear;
-     }
-  
-     private static double calculateFinalValue(double value, int classType, int lastPurchaseYear) {
-        int currentYear = Calendar.getInstance().get(1);
-        double discount = 0.0;
-        switch (classType) {
-           case 1:
-              if (lastPurchaseYear == currentYear) {
-                 discount = 0.3;
-              } else if (lastPurchaseYear >= currentYear - 5) {
-                 discount = 0.2;
-              } else {
-                 discount = 0.1;
-              }
+               throw var14;
+            }
 
-              case 2:
-              if (lastPurchaseYear == currentYear) {
-                 discount = 0.15;
-              } else if (lastPurchaseYear >= currentYear - 5) {
-                 discount = 0.13;
-              } else {
-                 discount = 0.05;
-              }
-              break;
+            bw.close();
+         } catch (Throwable var15) {
+            try {
+               br.close();
+            } catch (Throwable var12) {
+               var15.addSuppressed(var12);
+            }
 
-              case 3:
-              if (lastPurchaseYear == currentYear) {
-                 discount = 0.03;
-              }
-              break;
+            throw var15;
+         }
+
+         br.close();
+      } catch (NumberFormatException | IOException var16) {
+         var16.printStackTrace();
+      }
+
+   }
+
+   private static boolean isValidClassType(int classType) {
+      return classType >= 0 && classType <= 3;
+   }
+
+   private static boolean isValidYear(int year) {
+      int currentYear = Calendar.getInstance().get(1);
+      return year >= 1900 && year <= currentYear;
+   }
+
+   private static double calculateFinalValue(double value, int classType, int lastPurchaseYear) {
+      int currentYear = Calendar.getInstance().get(1);
+      double discount = 0.0;
+      switch (classType) {
+         case 1:
+            if (lastPurchaseYear == currentYear) {
+               discount = 0.3;
+            } else if (lastPurchaseYear >= currentYear - 5) {
+               discount = 0.2;
+            } else {
+               discount = 0.1;
+            }
+            break;
+         case 2:
+            if (lastPurchaseYear == currentYear) {
+               discount = 0.15;
+            } else if (lastPurchaseYear >= currentYear - 5) {
+               discount = 0.13;
+            } else {
+               discount = 0.05;
+            }
+            break;
+         case 3:
+            if (lastPurchaseYear == currentYear) {
+               discount = 0.03;
+            }
+            break;
+         default:
+            discount = 0.0;
+      }
+
+      return value - value * discount;
+   }
+}
