@@ -68,3 +68,26 @@ public class JoshuaAustinKodjovi {
        }
  
     }
+
+    private static boolean isValidClassType(int classType) {
+        return classType >= 0 && classType <= 3;
+     }
+  
+     private static boolean isValidYear(int year) {
+        int currentYear = Calendar.getInstance().get(1);
+        return year >= 1900 && year <= currentYear;
+     }
+  
+     private static double calculateFinalValue(double value, int classType, int lastPurchaseYear) {
+        int currentYear = Calendar.getInstance().get(1);
+        double discount = 0.0;
+        switch (classType) {
+           case 1:
+              if (lastPurchaseYear == currentYear) {
+                 discount = 0.3;
+              } else if (lastPurchaseYear >= currentYear - 5) {
+                 discount = 0.2;
+              } else {
+                 discount = 0.1;
+              }
+              break;
