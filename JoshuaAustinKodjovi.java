@@ -100,3 +100,9 @@ public class JoshuaAustinKodjovi {
                  discount = 0.05;
               }
               break;
+
+              case 3:
+              if (lastPurchaseYear == currentYear) {
+                 discount = 0.03;
+              }
+              break;
