@@ -90,4 +90,13 @@ public class JoshuaAustinKodjovi {
               } else {
                  discount = 0.1;
               }
+
+              case 2:
+              if (lastPurchaseYear == currentYear) {
+                 discount = 0.15;
+              } else if (lastPurchaseYear >= currentYear - 5) {
+                 discount = 0.13;
+              } else {
+                 discount = 0.05;
+              }
               break;
